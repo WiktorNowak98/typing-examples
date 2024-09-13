@@ -219,6 +219,64 @@ It is not only a clean-code thing, with the `override` and `final` decorators `m
 
 ### We have templates at home (with `Generic` and `TypeVar`)
 
+```python
+from typing import Generic, TypeVar
+
+T = TypeVar("T")
+
+class Vector(Generic[T]):
+    def __init__(self, initial: list[T]) -> None:
+        self._values: list[T] = initial
+
+vector = Vector[int](initial=[1, 2, 3])
+```
+
+```python
+from abc import ABC, abstractmethod
+from typing_extensions import override
+from typing import Generic, TypeVar
+
+
+T = TypeVar("T")
+
+class BaseStorage(ABC, Generic[T]):
+    def __init__(self) -> None:
+        self._storage: list[T] = []
+
+    @abstractmethod
+    def add_item(self, item: T) -> None:
+        raise NotImplementedError
+
+class IntegerStorage(BaseStorage[int]):
+    @override
+    def add_item(self, item: int) -> None:
+        self._storage.append(item)
+```
+
+```python
+from typing import Generic, TypeVar
+
+K = TypeVar("K")
+V = TypeVar("V")
+
+class CustomDict(Generic[K, V]):
+    def __init__(self) -> None:
+        self._storage: dict[K, V] = {}
+```
+
+```python
+from typing import TypeVar
+
+Number = TypeVar("Number", int, float)
+```
+
+```python
+from pydantic import BaseModel
+from typing import TypeVar
+
+Model = TypeVar("Model", bound=BaseModel)
+```
+
 ### We have traits at home (with `Protocol`)
 
 ### Dealing with callables and callback protocols
