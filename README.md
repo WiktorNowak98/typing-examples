@@ -376,8 +376,8 @@ def get_file_content(path: Optional[Path] = None, file_name: Optional[str] = Non
 
 ## More extensive examples
 
-More examples which require more code, can be found in the `examples/` directory.
+More examples which require more code, can be found in the `typing_examples/` directory.
 
-- `examples/circular_imports/`
-- `examples/type_narrowing_generic_result.py`
-- `examples/annotated.py`
+- `typing_examples/circular_imports/`
+- `typing_examples/type_narrowing_generic_result.py`
+- `typing_examples/annotated.py`
